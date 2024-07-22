@@ -1,24 +1,34 @@
 import "./App.css";
-
-import { Button } from "@/components/ui/button";
-import Logo from "./components/Logo";
-
+import { Toaster } from "sonner";
+import { Route, Routes } from "react-router-dom";
+import Homepage from "@/pages/Home";
+import Public from "@/protect/Public";
+import Agency from "@/protect/Agency";
+import Engineer from "@/protect/Engineer";
+import Login from "@/pages/Login";
+import Register from "@/pages/Register";
+import AgencyDashboard from "@/pages/agency/Dashboard";
+import EngineerDashboard from "@/pages/engineer/Dashboard";
+import Browse from "@/pages/Browse";
 function App() {
   return (
-    <div className="max-w-4xl py-10 space-y-4 mx-auto">
-      <Logo />
-      <h2 className="text-6xl font-display font-semibold">
-        Hiring have never been easier, automate your hiring workflow.
-      </h2>
-      <p className="text-gray-600">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed
-        dapibus leo. Curabitur nec pharetra nunc. Donec euismod, quam ac
-        consectetur tincidunt, nisl mi posuere nunc, vel tristique purus diam
-        eget purus. Nulla facilisi. Nullam ac erat. Donec a ipsum. Nulla
-        facilisi. Nullam ac erat. Donec a ipsum.
-      </p>
-      <Button>Start hiring talent</Button>
-    </div>
+    <>
+      <Routes>
+        <Route path="/" element={<Public />}>
+          <Route path="" element={<Homepage />} />
+          <Route path="login/:role" element={<Login />} />
+          <Route path="register/:role" element={<Register />} />
+        </Route>
+        <Route path="/" element={<Agency />}>
+          <Route path="dashboard/agency" element={<AgencyDashboard />} />
+        </Route>
+        <Route path="/" element={<Engineer />}>
+          <Route path="dashboard/engineer" element={<EngineerDashboard />} />
+        </Route>
+        <Route path="/browse" element={<Browse />} />
+      </Routes>
+      <Toaster />
+    </>
   );
 }
 
