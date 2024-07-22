@@ -1,10 +1,12 @@
 import "./App.css";
 
 import { Button } from "@/components/ui/button";
+import Logo from "./components/Logo";
 
 function App() {
   return (
     <div className="max-w-4xl py-10 space-y-4 mx-auto">
+      <Logo />
       <h2 className="text-6xl font-display font-semibold">
         Hiring have never been easier, automate your hiring workflow.
       </h2>
